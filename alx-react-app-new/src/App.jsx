@@ -7,6 +7,7 @@ import Header from './components/Header'
 import MainContent from './components/MainContent'
 import Footer from './components/Footer'
 import UserProfile from './components/UserProfile'
+import Counter from './components/Counter'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,12 +24,11 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+         <p>Current Count: {count}</p>
+         <button onClick={() => setCount(count + 1)}>Increment</button>
+         <button onClick={() => setCount(count - 1)}>Decrement</button>
+         <button onClick={() => setCount(0)}>Reset</button>
+       
       </div>
       <div>
        <WelcomeMessage />
@@ -37,6 +37,7 @@ function App() {
        <div><MainContent /></div>
        <div> <Footer /></div>
        <div><UserProfile name="Alice" age="25" bio="Loves hiking and photography" /></div>
+       <div><counter/></div>
        
      
     </>
