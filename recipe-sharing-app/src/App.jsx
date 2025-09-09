@@ -2,8 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
-import EditRecipeForm from "./components/EditRecipeForm";
-import DeleteRecipeButton from "./components/DeleteRecipeButton";
+import EditRecipeForm from './components/EditRecipeForm';
+import DeleteRecipeButton from './components/DeleteRecipeButton';
+import SearchBar from './components/SearchBar'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <h1>Recipe Sharing App</h1>
       <AddRecipeForm />
       <RecipeList />
+      <SearchBar/>
       </div>
       </>
       
