@@ -1,1 +1,1 @@
- import.meta.env.VITE_APP_GITHUB_API_KEY
+export const Apikey= import.meta.env.VITE_APP_GITHUB_API_KEY
