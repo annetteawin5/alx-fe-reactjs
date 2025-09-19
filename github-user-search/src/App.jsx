@@ -1,3 +1,5 @@
+import githubService from './services/githubService'
+
 import githubApi from './services/githubApi'
 function App(){
   return(
