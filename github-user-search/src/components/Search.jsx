@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import { fetchUserData } from "./services/githubService"; 
 
@@ -42,7 +44,7 @@ function Search() {
         <button type="submit">Search</button>
       </form>
       {loading && <div>Loading...</div>}
-      {!loading && error && <div>Looks like we can't find the user</div>}
+      {!loading && error && <div>Looks like we cant find the user</div>}
       {!loading && user && (
         <div>
           <img
