@@ -3,6 +3,8 @@ import { fetchUserData } from '../services/githubService';
 
 function Search() {
   const [username, setUsername] = useState("");
+  const [location, setLocation] = useState('');
+  const [minRepos, setMinRepos] = useState('');
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -39,7 +41,21 @@ function Search() {
           value={username}
           onChange={handleChange}
         />
-        <button type="submit">Search</button>
+         <input
+          className="w-full border p-2 rounded"
+          type="text"
+          placeholder="Location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+        <input
+          className="w-full border p-2 rounded"
+          type="number"
+          placeholder="Minimum Repositories"
+          value={minRepos}
+          onChange={(e) => setMinRepos(e.target.value)}
+          />
+        <button className="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Search</button>
       </form>
       {loading && <div>Loading...</div>}
       {!loading && error && <div>Looks like we cant find the user</div>}
@@ -50,7 +66,11 @@ function Search() {
             alt={user.login}
             width={50}
           />
-          <h2>{user.name ? user.name : user.login}</h2>
+          
+          <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full" />
+          <p>Name: {user.login}</p>
+          <p>Location: {user.location || 'N/A'}</p>
+          <p>Public Repos: {user.public_repos}</p>
           <a href={user.html_url} target="_blank" rel="noopener noreferrer">
             View Profile
           </a>
