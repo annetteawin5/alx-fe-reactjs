@@ -1,0 +1,6 @@
+{
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([\\s\\S]+?)`"
+  ],
+  "tailwindCSS.experimental.configFile": "./github-user-search/tailwind.config.js"
+}
