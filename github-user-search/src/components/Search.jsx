@@ -74,6 +74,18 @@ function Search() {
           <a href={user.html_url} target="_blank" rel="noopener noreferrer">
             View Profile
           </a>
+          <h3 className="text-lg font-semibold mt-4">Repositories:</h3>
+          <ul className="list-disc list-inside">
+         
+            {repos.map((repo) => (
+              <li key={repo.id} className="mt-2">
+                <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                  {repo.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        
         </div>
       )}
     </>
