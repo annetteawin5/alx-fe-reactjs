@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import './App.css'
 import HomePage from './components/HomePage'
-import RecipeDetail from "./components/RecipeDetails";
+import RecipeDetail from "./components/RecipeDetail";
 import AddRecipeForm from "./components/AddRecipeForm";
 
 function App() {
