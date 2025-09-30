@@ -1,9 +1,9 @@
  import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import { useState } from 'react'
-
 import './App.css'
 import HomePage from './components/HomePage'
+import RecipeDetail from "./components/RecipeDetails";
+import AddRecipeForm from "./components/AddRecipeForm";
 
 function App() {
   const [count, setCount] = useState(0)
