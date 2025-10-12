@@ -1,14 +1,71 @@
+// TodoList.test.js
+
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import TodoList from "../components/TodoList";
+import TodoList from "../components/TodoList"; 
 
-test("renders TodoList and adds a new task", () => {
-  render(<TodoList />);
-  const input = screen.getByPlaceholderText(/add a new task/i);
-  const button = screen.getByText(/add/i);
+describe('TodoList Component', () => {
+  
+  
+  const sampleTodos = [
+    { id: 1, text: 'forever', completed: false },
+    { id: 2, text: 'i love you', completed: true },
+    { id: 3, text: 'Delete Me', completed: false },
+  ];
+  
+  
+  const mockToggle = jest.fn();
+  const mockDelete = jest.fn();
 
-  fireEvent.change(input, { target: { value: "Learn React Testing" } });
-  fireEvent.click(button);
+  
+  const renderTodoList = (todos = sampleTodos) => {
+    render(
+      <TodoList 
+        todos={todos} 
+        onToggleTodo={mockToggle} 
+        onDeleteTodo={mockDelete} 
+      />
+    );
+  };
+  
 
-  expect(screen.getByText("Learn React Testing")).toBeInTheDocument();
+  test('renders the correct number of todo items and text', () => {
+    renderTodoList();
+    
+    
+    const listItems = screen.getAllByRole('listitem');
+    expect(listItems).toHaveLength(3);
+    
+    
+    expect(screen.getByText(/Walk Dog/i)).toBeInTheDocument();
+  });
+  
+  
+  test('calls onToggleTodo when an item is clicked', () => {
+    renderTodoList();
+    
+  
+    fireEvent.click(screen.getByText('Buy Milk'));
+    
+    
+    expect(mockToggle).toHaveBeenCalledTimes(1);
+    expect(mockToggle).toHaveBeenCalledWith(1);
+  });
+
+  
+  test('calls onDeleteTodo when the delete button is clicked', () => {
+    renderTodoList();
+    
+    
+    
+    const deleteButtons = screen.getAllByText('Delete');
+    
+    
+    fireEvent.click(deleteButtons[2]); 
+    
+    
+    expect(mockDelete).toHaveBeenCalledTimes(1);
+    expect(mockDelete).toHaveBeenCalledWith(3);
+  });
+  
 });
